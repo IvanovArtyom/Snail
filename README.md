@@ -34,7 +34,8 @@ public class SnailSolution
     public static int[] Snail(int[][] array)
     {
         List<int> result = new();
-        int leftBorder = 0, upperBound = 0, rightBorder = array[0].Length - 1, bottomLine = array.Length - 1;
+        int leftBorder = 0, upperBound = 0,
+            rightBorder = array[0].Length - 1, bottomLine = array.Length - 1;
 
         while (leftBorder <= rightBorder && upperBound <= bottomLine)
         {
@@ -42,13 +43,12 @@ public class SnailSolution
 
             for (int i = upperBound; i <= bottomLine; i++)
                 result.Add(array[i][rightBorder]);
-
             rightBorder--;
+
             result.AddRange(array[bottomLine--][leftBorder..(rightBorder + 1)].Reverse());
 
             for (int i = bottomLine; i >= upperBound; i--)
                 result.Add(array[i][leftBorder]);
-
             leftBorder++;
         }
 
